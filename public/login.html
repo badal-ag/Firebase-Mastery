@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/loginAndSignup/file.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Login | Firebase Mastery</title>
+</head>
+<body>
+    
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#" autocomplete="off" onsubmit="signup(event)">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" id="signUpName" placeholder="Name" />
+			<input type="email" id="signUpEmail" placeholder="Email" />
+			<input type="password" id="signUpPassword" placeholder="Password" />
+			<label class="label" for="identity">Who are You?</label>
+			<select name="identity" id="signUpIdentity">
+				<option value="Teacher">Teacher</option>
+				<option value="Student">Student</option>
+			</select>
+			<button type="submit" id="submit">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#" autocomplete="off" onsubmit="login(event)">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a onclick="loginWithGoogle()" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" id="loginEmail" placeholder="Email" />
+			<input type="password" id="loginPassword" placeholder="Password" />
+			<a href="forgotpassword.html">Forgot your password?</a>
+			<button type="submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+				<button onclick="signout()">Logout</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+  <script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyD2Kviz4iCMS5sMTW3II3jM0jrh5W4HHwQ",
+		authDomain: "tt-test-th.firebaseapp.com",
+		projectId: "tt-test-th",
+		storageBucket: "tt-test-th.appspot.com",
+		messagingSenderId: "797582011448",
+		appId: "1:797582011448:web:89d3fbbea71c7f7a9b0acd",
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+  </script>
+
+<script src="./pages/loginAndSignup/file.js"></script>
+<script src="./auth.js"></script>
+<script src="./firestore-db.js"></script>
+
+</body>
+</html>
