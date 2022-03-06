@@ -8,7 +8,7 @@ async function signup(event) {
     try{
         const result = await firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
         await result.user.updateProfile({
-            displayName: "New Tutorhuntz User",
+            displayName: `${name.value}`,
         });
         createUserCollection(result.user);
         //await result.user.sendEmailVerification();

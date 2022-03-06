@@ -1,6 +1,8 @@
 const userDetails = document.querySelector('.userDetails');
 const editProfile = document.querySelector('#editProfile');
 
+// To Create a Document in Collection in Firestore
+
 function createUserCollection(user) {
     firebase.firestore().collection('users')
     .doc(user.uid)
@@ -14,6 +16,8 @@ function createUserCollection(user) {
         createdAt: firebase.firestore.Timestamp.now(),
     })
 }
+
+// To Get all the Data from the User Collection
 
 async function getuserinfo(userID) {
     
@@ -40,6 +44,8 @@ async function getuserinfo(userID) {
             <button href="login.html">Sign In</h3>`
     }
 }
+
+// To Get Info in Realtime
 
 async function getuserInfoRealtime(userID) {
     
@@ -82,6 +88,8 @@ async function getuserInfoRealtime(userID) {
     }
 }
 
+// To Edit Profile Details
+
 function updateUserProfile(event) {
     event.preventDefault();
     const userdocRef = firebase.firestore()
@@ -98,6 +106,8 @@ function updateUserProfile(event) {
 
 }
 
+// To Upload Image
+
 function uploadImage(e) {
     console.log(e.target.files[0]);
 
@@ -106,20 +116,20 @@ function uploadImage(e) {
     const uploadTask = fileRef.put(e.target.files[0]);
 
     uploadTask.on('state_changed', 
-    (snapshot) => {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        if(progress=='100') alert('uploaded')
-    }, 
-    (error) => {
-        console.log(error);
-    }, 
-    () => {
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        console.log('File available at', downloadURL);
-        firebase.auth().currentUser.updateProfile({
-            photoURL: downloadURL
-        });
-        });
-    }
-);
+        (snapshot) => {
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            if(progress=='100') alert('uploaded')
+        }, 
+        (error) => {
+            console.log(error);
+        }, 
+        () => {
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            console.log('File available at', downloadURL);
+            firebase.auth().currentUser.updateProfile({
+                photoURL: downloadURL
+            });
+            });
+        }
+    );
 }
